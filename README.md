@@ -1,6 +1,8 @@
 # Jitsi-Meet-Raider
 This is a little Jitsi Meet Raider with features like siren earrape, chat spam, multiple bots etc.
 
+WARNING: THIS IS FOR EDUCATIONAL PURPOSES ONLY! I AM NOT RESPONSIBLE FOR EVERY DAMAGE RESULTING FROM THIS!
+
 ## Support
 For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 
