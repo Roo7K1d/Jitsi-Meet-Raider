@@ -8,7 +8,7 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 - Download the ZIP folder
 - Download [NodeJS](https://nodejs.org/en/download/)
 - Execute `npm i` in the downloaded folder
-- Open the `config.json` file and change the following to connect to your database:
+- In `config.json` you can adjust everything to your liking:
 ```
 {
     "url": "YourJitsiMeetURL", //Your Jitsi Meet URL
