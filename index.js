@@ -22,6 +22,8 @@ const config = require("./config.json");
         //headless: false,
         //ignoreDefaultArgs: ['--mute-audio'],
     });
+    
+    console.log("Browser launched.")
 
     for (i = 0; i < config.numberofbots; i++) {
 
@@ -43,6 +45,8 @@ const config = require("./config.json");
 
 
         const page = await browser.newPage();
+        
+        console.log("Opened new tab.")
 
         await page.goto(config.url);
         if (config.userandomnames == true) {
