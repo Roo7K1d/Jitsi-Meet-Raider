@@ -3,6 +3,9 @@ This is a little Jitsi Meet Raider with features like siren earrape, chat spam, 
 
 WARNING: THIS IS FOR EDUCATIONAL PURPOSES ONLY! I AM NOT RESPONSIBLE FOR EVERY DAMAGE RESULTING FROM THIS!
 
+## Preview
+[![Preview.png](https://img.youtube.com/vi/HJ_AXiK7gyo/0.jpg)](https://www.youtube.com/watch?v=HJ_AXiK7gyo)
+
 ## Support
 For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 
@@ -29,11 +32,6 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 ```
 - Execute `node index.js` to run the script
 - Done!
-
-## Preview
-A preview can be found here 
-[![Preview.png](https://img.youtube.com/vi/HJ_AXiK7gyo/0.jpg)](https://www.youtube.com/watch?v=HJ_AXiK7gyo)
-
 
 ## Features
 - Join a Jitsi Meeting with multiple bots
