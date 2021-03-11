@@ -52,4 +52,3 @@ Feedback is great! If you have a suggestion or request, create an issue! Similar
 
 ## Contributing
 You can help develop this project by doing some things of the todolist and making a pull request. If you have some even better ideas on how this project can be improved you can also make a pull requrest.
-
