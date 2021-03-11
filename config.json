@@ -1,0 +1,14 @@
+{
+    "url": "https://meet.jit.si/randomTest",
+    "numberofbots": "5",
+    "haspassword": false,
+    "password": "YourJitsiMeetPassword",
+    "message": "This is a test message",
+    "writemessage": true,
+    "raisehands": true,
+    "userandomnames": true,
+    "customname": "YourCustomBotsName",
+    "mintimebetweenmsg": 500,
+    "maxtimebetweenmsg": 2000,
+    "playaudio": true
+}
