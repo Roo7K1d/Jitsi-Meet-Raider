@@ -31,7 +31,7 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 - Done!
 
 ## Preview
-A preview can be found here [here](http://youtube.com)
+A preview can be found here [here](https://www.youtube.com/watch?v=HJ_AXiK7gyo&ab_channel=RootK1d)
 
 
 ## Features
