@@ -18,8 +18,8 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
     "haspassword": false, //Whether the meeting uses a password or not
     "password": "YourJitsiMeetPassword", //The password the meeting uses (if "haspassword" is true)
     "message": "YourCustomMessage", //The message you want the bots to send
-    "writemessage": true, //Whether or not you want the bots to repeatedly send your custom message
-    "raisehands": true, //Whether or not you want the bots to repeatedly raise their hands
+    "writemessage": true, //Whether or not you want every bot to repeatedly send your custom message
+    "raisehands": true, //Whether or not you want every bot to repeatedly raise their hands
     "userandomnames": true, //Whether or not you want the bots to have randomly generated usernames
     "customname": "YourCustomBotsName", //The name the bots will have if "userandomnames" is true
     "mintimebetweenmsg": 500, //The minimum time between sent messages in ms
