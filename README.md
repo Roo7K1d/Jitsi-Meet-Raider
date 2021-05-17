@@ -16,11 +16,11 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
 - In `config.json` you can adjust everything to your liking:
 ```
 {
-    "url": "YourJitsiMeetURL", //Your Jitsi Meet URL
-    "numberofbots": "5", //The desired number of bots you want (WARNING: Currently the script is very computationally intensive, more bots will probably cause your pc to lag!)
+    "url": "YourRoomURL", //Your Jitsi Meet URL
+    "numberofbots": "YourBotAmount", //The desired number of bots you want (WARNING: Currently the script is very computationally intensive, more bots will probably cause your pc to lag!)
     "haspassword": false, //Whether the meeting uses a password or not
-    "password": "YourJitsiMeetPassword", //The password the meeting uses (if "haspassword" is true)
-    "message": "YourCustomMessage", //The message you want the bots to send
+    "password": "YourRoomPassword", //The password the meeting uses (if "haspassword" is true)
+    "message": "YourMessage", //The message you want the bots to send
     "writemessage": true, //Whether or not you want every bot to repeatedly send your custom message
     "raisehands": true, //Whether or not you want every bot to repeatedly raise their hands
     "userandomnames": true, //Whether or not you want the bots to have randomly generated usernames
@@ -30,6 +30,7 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
     "playaudio": true //Whether or not you want the bots siren sound to be repeatedly played
 }
 ```
+- (If you download the source code: Download `hacked.y4m` from [here](https://anonfiles.com/X4z3D0w5u5/hacked_y4m) and move it into the `media` folder)
 - Execute `node index.js` to run the script
 - Done!
 
