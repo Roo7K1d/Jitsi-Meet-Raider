@@ -27,6 +27,8 @@ For quick support you can join my [Discord](https://discord.gg/QQaWvMkFbs)
     "customname": "YourCustomBotsName", //The name the bots will have if "userandomnames" is true
     "mintimebetweenmsg": 500, //The minimum time between sent messages in ms
     "maxtimebetweenmsg": 2000, //The maximum time between sent messages in ms
+    "muteeveryone": true, //Mute everyone in the call?
+    "disableallcameras": false, //Disable all active camera feeds in call?
     "playaudio": true //Whether or not you want the bots siren sound to be repeatedly played
 }
 ```
