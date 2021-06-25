@@ -1,4 +1,8 @@
 # Jitsi-Meet-Raider
+<img alt="GitHub" src="https://img.shields.io/github/license/roo7k1d/d0x-k1t-v2">
+<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/roo7k1d/d0x-k1t-v2">
+
+
 This is a little Jitsi Meet Raider with features like siren earrape, chat spam, multiple bots etc.
 
 WARNING: THIS IS FOR EDUCATIONAL PURPOSES ONLY! I AM NOT RESPONSIBLE FOR EVERY DAMAGE RESULTING FROM THIS!
