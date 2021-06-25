@@ -3,6 +3,8 @@ const { uniqueNamesGenerator, adjectives, colors, animals, NumberDictionary } = 
 const fs = require("fs");
 const config = require("./config.json");
 
+
+
 (async () => {
 
 
@@ -22,8 +24,6 @@ const config = require("./config.json");
         //headless: false,
         //ignoreDefaultArgs: ['--mute-audio'],
     });
-    
-    console.log("Browser launched.")
 
     for (i = 0; i < config.numberofbots; i++) {
 
@@ -45,10 +45,18 @@ const config = require("./config.json");
 
 
         const page = await browser.newPage();
-        
-        console.log("Opened new tab.")
 
         await page.goto(config.url);
+
+        if (config.playaudio == false) {
+
+            const button = await page.$$('div.audio-preview > div.settings-button-container > div.toolbox-button', { waitUntil: "networkidle2" });
+
+            await button[0].click();
+
+        }
+
+
         if (config.userandomnames == true) {
             await page.type(".field", generatedName);
         } else {
@@ -57,18 +65,37 @@ const config = require("./config.json");
         await page.keyboard.press('Enter');
 
 
+
         if (config.haspassword == true) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
             await page.waitForSelector('input');
             await page.focus("input");
             await page.type("input", config.password, { waitUntil: "domcontentloaded"});
             page.keyboard.press('Enter');
         }
 
-        if (config.playaudio == false) {
+        if (config.disableallcameras == true) {
+            await new Promise(resolve => setTimeout(resolve, 200));
+            await page.click('div.toolbox-content-wrapper > div.toolbox-content-items > div.toolbox-button-wth-dialog', { waitUntil: "networkidle" });
+            const button = await page.$$('ul.overflow-menu > li.overflow-menu-item', { waitUntil: "networkidle2" });
 
-            const button = await page.$$('div.settings-button-container > div.toolbox-button', { waitUntil: "networkidle2" });
+            await button[6].click();
 
-            await button[0].click();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await page.click('#modal-dialog-ok-button', { waitUntil: "networkidle" });
+        }
+
+        if (config.muteeveryone == true) {
+            await new Promise(resolve => setTimeout(resolve, 200));
+            await page.click('div.toolbox-content-wrapper > div.toolbox-content-items > div.toolbox-button-wth-dialog', { waitUntil: "networkidle" });
+            const button = await page.$$('ul.overflow-menu > li.overflow-menu-item', { waitUntil: "networkidle2" });
+
+            await button[5].click();
+
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await page.click('#modal-dialog-ok-button', { waitUntil: "networkidle" });
 
         }
 
@@ -79,7 +106,7 @@ const config = require("./config.json");
             await new Promise(resolve => setTimeout(resolve, time));
 
             for (i = 1; i > 0; i + 1) {
-                const button = await page.$$('div.button-group-left > div.toolbox-button', { waitUntil: "networkidle2" });
+                const button = await page.$$('div.toolbox-content-items > div.toolbox-button', { waitUntil: "networkidle2" });
 
                 await button[1].click();
                 var time = Math.floor(Math.random() * (config.maxtimebetweenmsg - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
@@ -89,8 +116,9 @@ const config = require("./config.json");
 
 
         if (config.writemessage == true) {
-            await page.click('div.button-group-left > div.toolbar-button-with-badge > div.toolbox-button');
-            await page.waitForSelector('textarea', {waitUntil: "networkidle2"}); // <-- wait until it exists
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            await page.click('div.toolbox-content-items > div.toolbar-button-with-badge > div.toolbox-button', { waitUntil: "networkidle" });
+            await page.waitForSelector('textarea', {waitUntil: "networkidle"}); // <-- wait until it exists
             await page.focus("textarea", {waitUntil: "networkidle"});
 
             var time = Math.floor(Math.random() * config.maxtimebetweenmsg) + config.mintimebetweenmsg;
@@ -98,12 +126,13 @@ const config = require("./config.json");
 
             for (i = 1; i > 0; i + 1) {
                 if (config.raisehands == true) {
-                    const button = await page.$$('div.button-group-left > div.toolbox-button', { waitUntil: "networkidle2" });
+                    const button = await page.$$('div.toolbox-content-items > div.toolbox-button', { waitUntil: "networkidle2" });
 
                     await button[1].click();
-                    var time = Math.floor(Math.random() * (config.maxtimebetweenmsg - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
+                    var time = Math.floor(Math.random() * (config.maxtimebetweenmsg + 1000 - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
                     await new Promise(resolve => setTimeout(resolve, time));
                 }
+                await new Promise(resolve => setTimeout(resolve, 200));
                 await page.type("textarea", config.message);
                 page.keyboard.press('Enter');
                 var time = Math.floor(Math.random() * (config.maxtimebetweenmsg - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
