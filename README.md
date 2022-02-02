@@ -63,6 +63,8 @@ Click on the image to watch the [YouTube video](https://www.youtube.com/watch?v=
 <hr>
 
 ## Support
+I will not teach you how to code or edit basic JSON files. Just use Google if you need help with that.
+<br>
 For support you can create an issue [here on GitHub](https://github.com/rootk1d/jitsi-meet-raider/issues) or you can join my [Discord](https://discord.gg/QQaWvMkFbs).
 
 <hr>
