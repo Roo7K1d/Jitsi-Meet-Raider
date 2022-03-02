@@ -48,7 +48,7 @@ NOTE: THIS SCRIPT ONLY WORKS FOR <a href="https://meet.jit.si/">JITSI MEET</a> A
     "playaudio": true //Whether or not you want the bots siren sound to be repeatedly played
 }
 ```
-- (If you download the source code: Download `hacked.y4m` from [here](https://anonfiles.com/X4z3D0w5u5/hacked_y4m) and move it into the `media` folder)
+- (If you download the source code: Download `hacked.y4m` from [here](http://rootk1d.xyz/archive/GitHub-Jitsi-Meet-Raider/hacked.y4m) and move it into the `media` folder)
 - Execute `node index.js` to run the script
 - Done!
 
