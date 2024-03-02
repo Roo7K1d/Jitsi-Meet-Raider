@@ -7,137 +7,105 @@ const config = require("./config.json");
 
 (async () => {
 
+    const args = [
+        '--use-fake-ui-for-media-stream',
+        '--use-fake-device-for-media-stream',
+        '--no-sandbox',
+        '--allow-file-access-from-files',
+        '--allow-running-insecure-content',
+        '--disable-web-security',
+        '--ignore-certificate-errors',
+        '--ignore-certificate-errors-spki-list ',
+        '--auto-accept-camera-and-microphone-capture',
+        '--disable-notifications',
+    ]
+
+    if (config.playvideo) {
+        args.push('--use-file-for-fake-video-capture=' + __dirname + '/media/hacked.y4m');
+    } else {
+        args.push('--use-file-for-fake-video-capture=' + __dirname + '/media/black.y4m');
+    }
+
+    if (config.playaudio) {
+        args.push('--use-file-for-fake-audio-capture=' + __dirname + '/media/siren.wav');
+    } else {
+        args.push('--use-file-for-fake-audio-capture=' + __dirname + '/media/blank.wav');
+    }
 
     const browser = await puppeteer.launch({
-        args: [
-            '--use-fake-ui-for-media-stream',
-            '--use-file-for-fake-video-capture=' + __dirname + '/media/hacked.y4m',
-            '--use-fake-device-for-media-stream',
-            '--no-sandbox',
-            '--allow-file-access-from-files',
-            '--allow-running-insecure-content',
-            '--disable-web-security',
-            '--use-file-for-fake-audio-capture=' + __dirname + '/media/siren.wav',
-            '--ignore-certificate-errors',
-            '--ignore-certificate-errors-spki-list '
-        ],
-        //headless: false,
-        //ignoreDefaultArgs: ['--mute-audio'],
+        args: args,
+        headless: true,
     });
 
     for (i = 0; i < config.numberofbots; i++) {
 
-        startUser(uniqueNamesGenerator, NumberDictionary, browser)
+        await startUser(browser);
 
     }
 
-    async function startUser(uniqueNamesGenerator, NumberDictionary, browser) {
+    async function startUser(browser) {
+        //Generate Random user Names
 
+        randomName = uniqueNamesGenerator({ 
+            dictionaries: [colors, adjectives, animals], 
+            separator: "", 
+            length: 2, 
+            style: 'capital' 
+        }) + NumberDictionary.generate({ min: 10, max: 9999 });
 
-        let randomNumber = await NumberDictionary.generate({ min: 10, max: 9999 });
-        let randomName = await uniqueNamesGenerator({
-            dictionaries: [colors, adjectives, animals],
-            separator: "",
-            length: 2,
-            style: 'capital'
-        })
-        let generatedName = randomName + randomNumber;
-
+        // Open a new page for each bot
 
         const page = await browser.newPage();
 
+        await browser.defaultBrowserContext().overridePermissions(config.url, ['camera', 'microphone', 'gyroscope', 'notifications', 'background-sync'])
         await page.goto(config.url);
 
-        if (config.playaudio == false) {
+        //Find User Name Textfield
+        let textfield = await page.waitForSelector('div.premeeting-screen > div > div> div > div > div > div > input');
 
-            const button = await page.$$('div.audio-preview > div.settings-button-container > div.toolbox-button', { waitUntil: "networkidle2" });
+        //Clear Textfield From Previous Name
+        await page.evaluate(() => {
+            const field = document.querySelector('div.premeeting-screen > div > div> div > div > div > div > input');
+            field.value = '';
+        });
 
-            await button[0].click();
+        //Type Bot Name
+        config.userandomnames == true ? await textfield.type(randomName) : await textfield.type(config.customname);
 
-        }
-
-
-        if (config.userandomnames == true) {
-            await page.type(".field", generatedName);
-        } else {
-            await page.type(".field", config.customname);
-        }
-        await page.keyboard.press('Enter');
-
-
+        //Join Meeting
+        await page.click('div[data-testid="prejoin.joinMeeting"]', { waitUntil: "networkidle2" });
 
         if (config.haspassword == true) {
+            //Is Room Password Protected?
+
             await new Promise(resolve => setTimeout(resolve, 1000));
             await page.waitForSelector('input');
             await page.focus("input");
-            await page.type("input", config.password, { waitUntil: "domcontentloaded"});
+            await page.type("input", config.password, { waitUntil: "domcontentloaded" });
             page.keyboard.press('Enter');
         }
 
-        if (config.disableallcameras == true) {
-            await new Promise(resolve => setTimeout(resolve, 200));
-            await page.click('div.toolbox-content-wrapper > div.toolbox-content-items > div.toolbox-button-wth-dialog', { waitUntil: "networkidle" });
-            const button = await page.$$('ul.overflow-menu > li.overflow-menu-item', { waitUntil: "networkidle2" });
-
-            await button[6].click();
-
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            await page.click('#modal-dialog-ok-button', { waitUntil: "networkidle" });
+        if (config.raisehands == true) {
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            //Raise Hands
+            await page.click('div.toolbox-content-items > div.reactions-menu-popup-container > div.settings-button-container > div.toolbox-button', { waitUntil: "networkidle2" });
         }
-
-        if (config.muteeveryone == true) {
-            await new Promise(resolve => setTimeout(resolve, 200));
-            await page.click('div.toolbox-content-wrapper > div.toolbox-content-items > div.toolbox-button-wth-dialog', { waitUntil: "networkidle" });
-            const button = await page.$$('ul.overflow-menu > li.overflow-menu-item', { waitUntil: "networkidle2" });
-
-            await button[5].click();
-
-            await new Promise(resolve => setTimeout(resolve, 500));
-
-            await page.click('#modal-dialog-ok-button', { waitUntil: "networkidle" });
-
-        }
-
-        if (config.raisehands == true && config.writemessage == false) {
-
-            var time = Math.floor(Math.random() * config.maxtimebetweenmsg) + config.mintimebetweenmsg;
-            console.log(time)
-            await new Promise(resolve => setTimeout(resolve, time));
-
-            for (i = 1; i > 0; i + 1) {
-                const button = await page.$$('div.toolbox-content-items > div.toolbox-button', { waitUntil: "networkidle2" });
-
-                await button[1].click();
-                var time = Math.floor(Math.random() * (config.maxtimebetweenmsg - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
-                await new Promise(resolve => setTimeout(resolve, time));
-            }
-        }
-
 
         if (config.writemessage == true) {
+
+            //Let Every Bot Write A Random Message
+
             await new Promise(resolve => setTimeout(resolve, 1000));
             await page.click('div.toolbox-content-items > div.toolbar-button-with-badge > div.toolbox-button', { waitUntil: "networkidle" });
-            await page.waitForSelector('textarea', {waitUntil: "networkidle"}); // <-- wait until it exists
-            await page.focus("textarea", {waitUntil: "networkidle"});
+            await page.waitForSelector('textarea', { waitUntil: "networkidle" }); // <-- wait until it exists
 
-            var time = Math.floor(Math.random() * config.maxtimebetweenmsg) + config.mintimebetweenmsg;
-            await new Promise(resolve => setTimeout(resolve, time));
+            //Focus Textarea 
+            await page.focus("textarea", { waitUntil: "networkidle" });
 
-            for (i = 1; i > 0; i + 1) {
-                if (config.raisehands == true) {
-                    const button = await page.$$('div.toolbox-content-items > div.toolbox-button', { waitUntil: "networkidle2" });
-
-                    await button[1].click();
-                    var time = Math.floor(Math.random() * (config.maxtimebetweenmsg + 1000 - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
-                    await new Promise(resolve => setTimeout(resolve, time));
-                }
-                await new Promise(resolve => setTimeout(resolve, 200));
+            setInterval(async () => {
                 await page.type("textarea", config.message);
                 page.keyboard.press('Enter');
-                var time = Math.floor(Math.random() * (config.maxtimebetweenmsg - config.mintimebetweenmsg)) + config.mintimebetweenmsg;
-                await new Promise(resolve => setTimeout(resolve, time));
-            }
+            }, 2000)
         }
     }
 })();

@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/820416224005586945/886620544122908762/jitsi-meet-raider.png">
+<img src="http://rootk1d.xyz/github/jitsi/screenshot.png">
 <p align="center"><i>For raiding Jitsi Meet conferences with bots with features like earrape, chat spam and synced spoofed camera feed.</i></p>
 <div align="center">
   <a href="https://github.com/roo7k1d/jitsi-meet-raider/stargazers"><img src="https://img.shields.io/github/stars/roo7k1d/jitsi-meet-raider?color=yellow" alt="Stars Badge"/></a>
@@ -32,23 +32,20 @@ NOTE: THIS SCRIPT ONLY WORKS FOR <a href="https://meet.jit.si/">JITSI MEET</a> A
 - In `config.json` you can adjust everything to your liking:
 ```
 {
-    "url": "YourRoomURL", //Your Jitsi Meet URL
-    "numberofbots": "YourBotAmount", //The desired number of bots you want (WARNING: Currently the script is very computationally intensive, more bots will probably cause your pc to lag!)
-    "haspassword": false, //Whether the meeting uses a password or not
-    "password": "YourRoomPassword", //The password the meeting uses (if "haspassword" is true)
-    "message": "YourMessage", //The message you want the bots to send
-    "writemessage": true, //Whether or not you want every bot to repeatedly send your custom message
-    "raisehands": true, //Whether or not you want every bot to repeatedly raise their hands
-    "userandomnames": true, //Whether or not you want the bots to have randomly generated usernames
-    "customname": "YourCustomBotsName", //The name the bots will have if "userandomnames" is true
-    "mintimebetweenmsg": 500, //The minimum time between sent messages in ms
-    "maxtimebetweenmsg": 2000, //The maximum time between sent messages in ms
-    "muteeveryone": true, //Mute everyone in the call?
-    "disableallcameras": false, //Disable all active camera feeds in call?
-    "playaudio": true //Whether or not you want the bots siren sound to be repeatedly played
+    "url": "YourJitsiMeetURL", //Your Jitsi Meet URL (e.g. "https://meet.jit.si/Test123Max12")
+    "numberofbots": 5, //The number of bots you want to join
+    "haspassword": false, //If Jitsi meeting uses password
+    "password": "YourJitsiMeetPassword", //The meeting password if "haspassword" = true
+    "message": "YourCustomMessage", //The custom message you want the bots to send
+    "writemessage": true, //Should the bots send messages?
+    "raisehands": true, //Should the bots raise their hands on join?
+    "userandomnames": true, //Uses randomly generated bot usernames (if false - see "customname")
+    "customname": "YourCustomBotsName", //The name you want the bots to have
+    "playvideo": true, //Should the bots play the Welcome To The Game skull as spoofed cam?
+    "playaudio": true //Should the bots play the Purge siren as spoofed mic?
 }
 ```
-- (If you download the source code: Download `hacked.y4m` from [here](http://rootk1d.xyz/archive/GitHub-Jitsi-Meet-Raider/hacked.y4m) and move it into the `media` folder)
+- (If you download the source code: Download `hacked.y4m` from [here](http://rootk1d.xyz/github/jitsi/hacked.y4m) & `black.y4m` from [here](http://rootk1d.xyz/github/jitsi/black.y4m) and move them into the `media` folder)
 - Execute `node index.js` to run the script
 - Done!
 
@@ -91,8 +88,6 @@ You are not allowed to remove any part of the footer. That includes all of the i
 ## Todo (See Issues with tag "help wanted")
 - Ability to use proxies
 - Direct message spam
-- Ability to turn off fake cam
-- Make script less resource intensive
 - Better console logging
 
 <hr>

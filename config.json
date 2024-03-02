@@ -1,6 +1,6 @@
 {
-    "url": "YourRoomURL",
-    "numberofbots": "YourBotAmount",
+    "url": "YourJitsiMeetURL",
+    "numberofbots": 5,
     "haspassword": false,
     "password": "YourRoomPassword",
     "message": "YourCustomMessage",
@@ -8,9 +8,6 @@
     "raisehands": true,
     "userandomnames": true,
     "customname": "YourCustomBotsName",
-    "mintimebetweenmsg": 500,
-    "maxtimebetweenmsg": 5000,
-    "muteeveryone": true,
-    "disableallcameras": false,
+    "playvideo": true,
     "playaudio": true
 }
