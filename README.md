@@ -52,7 +52,7 @@ NOTE: THIS SCRIPT ONLY WORKS FOR <a href="https://meet.jit.si/">JITSI MEET</a> A
 <hr>
 
 ## Demo
-[![Preview.png](https://cdn.discordapp.com/attachments/820416224005586945/886622989947371651/unknown.png)](https://www.youtube.com/watch?v=HJ_AXiK7gyo)
+[![Preview.png](http://rootk1d.xyz/github/jitsi/screenshot.png)](https://www.youtube.com/watch?v=HJ_AXiK7gyo)
 <br>
 <br>
 Click on the image to watch the [YouTube video](https://www.youtube.com/watch?v=HJ_AXiK7gyo) i made on this project.
