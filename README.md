@@ -12,6 +12,8 @@
 <a href="https://github.com/roo7k1d/jitsi-meet-raider/"><img src="https://img.shields.io/tokei/lines/github/roo7k1d/jitsi-meet-raider?color=yellowgreen" alt="License Badge"/></a>
 <a href="https://github.com/roo7k1d/jitsi-meet-raider/releases"><img src="https://img.shields.io/github/v/release/roo7k1d/jitsi-meet-raider?color=success" alt="License Badge"/></a>
 <a href="https://github.com/roo7k1d/jitsi-meet-raider/commits"><img src="https://img.shields.io/github/last-commit/roo7k1d/jitsi-meet-raider" alt="License Badge"/></a>
+<br>
+<a href="https://discord.gg/QQaWvMkFbs"><img src="https://img.shields.io/discord/801802083757457418?logo=discord&label=discord"/></a>
 </div>
 <br>
 <p align="center"><a href="https://github.com/roo7k1d/jitsi-meet-raider/issues">Report a Bug</a> | <a href="https://github.com/roo7k1d/jitsi-meet-raider/issues">Request a New Feature</a> | <a href="https://github.com/jitsi-meet-raider/pulls">Help Develop This Project</a> | <a href="https://ko-fi.com/RootK1d">Fund Me</a></p>
