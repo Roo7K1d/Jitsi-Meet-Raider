@@ -1,4 +1,4 @@
-<img src="http://rootk1d.xyz/github/jitsi/screenshot.png">
+<img src="http://rootk1d.xyz/github/jitsi/banner.png">
 <p align="center"><i>For raiding Jitsi Meet conferences with bots with features like earrape, chat spam and synced spoofed camera feed.</i></p>
 <div align="center">
   <a href="https://github.com/roo7k1d/jitsi-meet-raider/stargazers"><img src="https://img.shields.io/github/stars/roo7k1d/jitsi-meet-raider?color=yellow" alt="Stars Badge"/></a>
